@@ -2,7 +2,7 @@
 from flask import Blueprint, render_template
 
 # Desc: Blueprint for home route
-home_blueprint = Blueprint('home', __name__, template_folder='src/templates')   
+home_blueprint = Blueprint('home', __name__)   
 
 # Desc: Home route
 @home_blueprint.route('/')

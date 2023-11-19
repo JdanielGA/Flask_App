@@ -8,7 +8,7 @@ from src.routes.clients import clients_blueprint
 
 
 # Desc: Create and config the app.
-app = Flask(__name__, template_folder='src/templates')
+app = Flask(__name__, template_folder='src/templates', static_folder='src/static')
 app.config.from_object(Config)
 
 # Desc: Blueprint of the app.
