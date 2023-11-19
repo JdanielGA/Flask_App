@@ -1,19 +1,20 @@
+# Desc: Modules and libraries for launch the app.
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager
-from config import Config
-from src.models.user import User
 
-# Desc: Creating the app and defining the routes
-app = Flask(__name__)
+# Desc: My own modules and libraries for launch the app.
+from config.config import Config
+from src.routes.home import home_blueprint
+from src.routes.clients import clients_blueprint
+
+
+# Desc: Create and config the app.
+app = Flask(__name__, template_folder='src/templates')
 app.config.from_object(Config)
-db = SQLAlchemy(app)
-loging = LoginManager(app)
-loging.login_view = 'login'
 
-@app.route('/')
-def index():
-    return 'Hello World!'
+# Desc: Blueprint of the app.
+app.register_blueprint(home_blueprint)
+app.register_blueprint(clients_blueprint)
 
-if __name__ == "__main__":
-    app.run(debug=True)
+# Desc: Launch the app.
+if __name__ == '__main__':
+    app.run(debug=True, port=5000)
