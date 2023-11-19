@@ -1,0 +1,33 @@
+<nav class="main-nav">
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/modules/navbar.css') }}">
+    </head>
+    <body>
+        <div class="main-nav-logo">
+            <p>
+                In this part of the navbar it will be the logo of the app.
+            </p>
+        </div>
+        <main class="main-nav-menu">
+            <ul class="main-nav-menu__links">
+                <li class="main-nav-menu__links__element">
+                    <a href="{{ url_for('home.home') }}">Home</a>
+                </li>
+                <li class="main-nav-menu__links__element">
+                    <a href="{{ url_for('clients.clients') }}">Clients</a>
+                </li>
+                <li class="main-nav-menu__links__element">
+                    <a href="">Tasks</a>
+                </li>
+                <li class="main-nav-menu__links__element">
+                    <a href="">Calendar</a>
+                </li>
+            </ul>
+        </main>
+        <div class="main-nav-button">
+            <button onclick="location.href=''">
+                Logout
+            </button>
+        </div>
+    </body>
+</nav>
