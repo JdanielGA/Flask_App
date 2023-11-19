@@ -5,6 +5,7 @@ from flask import Flask
 from config.config import Config
 from src.routes.home import home_blueprint
 from src.routes.clients import clients_blueprint
+from src.routes.auth import auth_blueprint
 
 
 # Desc: Create and config the app.
@@ -12,6 +13,7 @@ app = Flask(__name__, template_folder='src/templates', static_folder='src/static
 app.config.from_object(Config)
 
 # Desc: Blueprint of the app.
+app.register_blueprint(auth_blueprint)
 app.register_blueprint(home_blueprint)
 app.register_blueprint(clients_blueprint)
 

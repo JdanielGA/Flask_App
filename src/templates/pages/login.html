@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App: Login</title>
+</head>
+<body>
+    <div class="content">
+        <div class="content-logo">
+            <img src="" alt="Logo">
+            <p>
+                Here will be the logo
+            </p>
+        </div>
+        <div class="content-login">
+            <header class="content-login__header">
+                <h1>Login</h1>
+                <p>
+                    you are in the login page!
+                </p>
+            </header>
+            <form class="content-login__form" action="{{ url_for('login.login') }}" method="post">
+                {{ form.hidden_tag() }}
+                {{ form.username.label }}
+                {{ form.username }} <br>
+                {{ form.password.label }}
+                {{ form.password }} <br>
+                {{ form.login }} <br>
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>
