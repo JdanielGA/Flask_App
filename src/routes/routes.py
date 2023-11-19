@@ -75,3 +75,8 @@ def delete_item(id):
     db.session.commit()
     flash('Your item has been deleted.')
     return redirect(url_for('index'))
+
+@app.route('/items')
+def items():
+    items = Item.query.all()
+    return render_template('items.html', items=items)
