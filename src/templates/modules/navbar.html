@@ -4,9 +4,7 @@
     </head>
     <body>
         <div class="main-nav-logo">
-            <p>
-                In this part of the navbar it will be the logo of the app.
-            </p>
+            <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="Logo">
         </div>
         <main class="main-nav-menu">
             <ul class="main-nav-menu__links">
@@ -24,6 +22,7 @@
                 </li>
             </ul>
         </main>
+        <div class="main-nav-space"></div>
         <div class="main-nav-button">
             <button onclick="location.href=''">
                 Logout
