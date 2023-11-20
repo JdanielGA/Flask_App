@@ -39,7 +39,7 @@ class User(db.Model, UserMixin):
     # Desc: Property to get the password.
     @property
     def password(self):
-        raise AttributeError('password is not a readable attribute')
+        return self._password
     
     # Desc: Property to set the password.
     @password.setter

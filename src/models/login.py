@@ -4,6 +4,6 @@ from flask_wtf import FlaskForm
 
 # Desc: Class for login model.
 class LoginForm(FlaskForm):
-    username = StringField('Username:', [validators.DataRequired()])
+    email = StringField('Email:', [validators.DataRequired(), validators.Email()])
     password = PasswordField('Password:', [validators.DataRequired()])
     login = SubmitField('Login')

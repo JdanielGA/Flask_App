@@ -1,3 +1,4 @@
+## Route "config/config.py" 
 # Desc: Modules and libraries to config the app.
 from flask_sqlalchemy import SQLAlchemy
 import os
@@ -17,8 +18,10 @@ db = SQLAlchemy()
 # Desc: Object config.
 class Config(object):
     SECRET_KEY = 'tu-clave-secreta'
+    SECURITY_PASSWORD_SALT = 'tu-sal-para-la-contraseña'
     SQLALCHEMY_DATABASE_URI = database_url
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SECURITY_USER_IDENTITY_ATTRIBUTES = [{"email": "{0}"}, {"username": "{0}"}]
 
     @staticmethod
     def init_app(app):
