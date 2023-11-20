@@ -1,50 +1,52 @@
-# Desc: Modules and libraries to perform login tests.
+''' Login test. '''
+# Desc: Modules and libraries for the test.
 import unittest
 from flask import Flask
-from flask_security import Security, SQLAlchemyUserDatastore, login_user, current_user
+from config.config import Config, db
+from src.models.user import User
 
-# Desc: My own modules and libraries to perform login tests.
-from config.config import db, Config
-from src.models.user import User, Role
 
-# Desc: Class to perform login tests.
+# Desc: User data.
+username = 'admin'
+password = 'admin'
+
+# Desc: Login function.
+def login(username, password):
+    # Desc: Check if the user exists.
+    user = db.session.query(User).filter_by(username=username).first()
+    if not user:
+        return False
+    # Desc: Check if the password is correct.
+    if not user.check_password(password):
+        return False
+    return True
+
+# Desc: Test class.
 class LoginTest(unittest.TestCase):
+    # Desc: Setup function.
     def setUp(self):
-        # Desc: Create application.
         self.app = Flask(__name__)
         self.app.config.from_object(Config)
-        Config.init_app(self.app)
-        self.client = self.app.test_client()
-        self.ctx = self.app.test_request_context()
-        self.ctx.push()
+        db.init_app(self.app)
+        self.app_context = self.app.app_context()
+        self.app_context.push()
 
-        # Desc: Create database.
-        with self.app.app_context():
-            db.create_all()
-
-        # Desc: Initialize Flask-Security
-        self.user_datastore = SQLAlchemyUserDatastore(db, User, Role)
-        self.security = Security(self.app, self.user_datastore)
-
-        # Desc: Create a user for the tests.
-        self.test_user = self.user_datastore.create_user(
-            username='testuser',
-            email='test@example.com',
-            password='password'
-        )
-        db.session.commit()
-
-
-    def tearDown(self):
-        # Desc: Delete test request context.
-        self.ctx.pop()
-
-
+    # Desc: Test login function.
     def test_login(self):
-        # Desc: Test login with the test user.
-        with self.client:
-            login_user(self.test_user)
-            self.assertTrue(current_user.is_authenticated)
+        # Test with correct username and password.
+        self.assertTrue(login(username, password))
+        print('\n1) - Test with correct username and password passed successfully.')
 
-if __name__ == '__main__':
+        # Test with incorrect username.
+        self.assertFalse(login('wrong_username', password))
+        print('2) - Test with incorrect username passed successfully.')
+
+        # Test with incorrect password.
+        self.assertFalse(login(username, 'wrong_password'))
+        print('3) - Test with incorrect password passed successfully.')
+
+        # Desc: Print the result.
+        print('\nLogin test passed successfully!')
+
+if __name__ == "__main__":
     unittest.main()

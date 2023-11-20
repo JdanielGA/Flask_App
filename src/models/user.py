@@ -46,10 +46,6 @@ class User(db.Model, UserMixin):
     def password(self, password):
         self._password = generate_password_hash(password)
 
-    # Desc: Method to generate a password hash.
-    def generate_password(self, password):
-        self._password = generate_password_hash(password)
-
     # Desc: Method to check a password hash.
     def check_password(self, password):
         return check_password_hash(self._password, password)
