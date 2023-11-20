@@ -11,11 +11,15 @@ project_dir = os.path.dirname(os.path.abspath(__file__))
 # Desc: Database URL.
 database_url = f'sqlite:///{os.path.join(project_dir, database_name)}'
 
+# Desc: SQLAlchemy instance
+db = SQLAlchemy()
+
 # Desc: Object config.
 class Config(object):
     SECRET_KEY = 'tu-clave-secreta'
     SQLALCHEMY_DATABASE_URI = database_url
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-# Desc: SQLAlchemy instance
-db = SQLAlchemy()
+    @staticmethod
+    def init_app(app):
+        db.init_app(app)
