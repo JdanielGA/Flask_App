@@ -2,6 +2,7 @@
 ## Desc: Route "src/routes/home.py".
 # Desc: Modules and libraries for home route
 from flask import Blueprint, render_template
+# Desc: My own modules and libraries for home route.
 from src.routes.auth import login_required
 
 # Desc: Blueprint for home route
