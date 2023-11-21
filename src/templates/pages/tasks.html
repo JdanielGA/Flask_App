@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App: Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/tasks.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        {% include 'modules/navbar.html' %}
+    </div>
+    <header>
+        <h1>Tasks</h1>
+        <p>
+            You are in the tasks page.
+        </p>
+    </header>
+</body>
+</html>

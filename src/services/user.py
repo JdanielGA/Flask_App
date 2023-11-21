@@ -1,7 +1,8 @@
 ''' User services '''
-## Route "src/services/user.py" file.
+## Path: "src/services/user.py".
 # Desc: Modules and libraries for user services.
 from config.config import db
+# Desc: My own modules and libraries for user services.
 from src.models.user import User, Role, RolesUsers
 
 # Desc: Funtion to login user.
@@ -18,7 +19,7 @@ def login_user(username=None, password=None):
     return True
 
 # Desc: Funtion to create a new user.
-def create_user(id=None, username=None, email=None, password=None, active=True, roles=None):
+def create_user(id=None, username=None, email=None, password=None, password_confirmation=None,active=True, roles=None):
     
     # Desc: Check if id already exists.
     user = User.query.filter_by(id=id).first()
@@ -43,6 +44,9 @@ def create_user(id=None, username=None, email=None, password=None, active=True, 
         email=email,
         active=active,
         fs_uniquifier=roles)
+    # Desc: Check if password and password_confirmation are the same.
+    if password != password_confirmation:
+        return 'Password and password confirmation are not the same!'
     user.password = password
     db.session.add(user)
     db.session.commit()

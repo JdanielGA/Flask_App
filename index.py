@@ -7,7 +7,7 @@ from src.routes.clients import clients_blueprint
 from src.routes.auth import auth_blueprint
 from src.routes.calendar import calendar_blueprint
 from src.routes.tasks import tasks_blueprint
-from src.routes.register import register_blueprint
+from src.routes.user import user_blueprint
 
 # Desc: Create and config the app.
 app = Flask(__name__, template_folder='src/templates', static_folder='src/static')
@@ -20,7 +20,7 @@ app.register_blueprint(home_blueprint)
 app.register_blueprint(clients_blueprint)
 app.register_blueprint(tasks_blueprint)
 app.register_blueprint(calendar_blueprint)
-app.register_blueprint(register_blueprint)
+app.register_blueprint(user_blueprint)
 
 @app.context_processor
 def inject_user():

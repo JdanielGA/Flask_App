@@ -1,4 +1,5 @@
-# Route "src/models/login.py".
+''' Login model '''
+## Path: "src/models/login.py".
 # Desc: Modules and libraries for login model.
 from wtforms import StringField, PasswordField, SubmitField, validators
 from flask_wtf import FlaskForm

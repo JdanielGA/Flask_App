@@ -1,5 +1,5 @@
 ''' Aunthentication route '''
-## Route "src/routes/auth.py" file.
+## Path: "src/routes/auth.py".
 # Desc: Modules and libraries for login route.
 from flask import Blueprint, render_template, request, redirect, url_for, flash, session, g
 import functools
