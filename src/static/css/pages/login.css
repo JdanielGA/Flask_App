@@ -103,3 +103,25 @@ body::after {
     color: white;
     cursor: pointer;
 }
+
+.content-login__alerts {
+    width: 50%;
+    padding-top: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.alert {
+    width: 100%;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}
+
+.alert-danger {
+    background-color: #f44336b7; /* Red */
+}

@@ -23,6 +23,11 @@
             </ul>
         </main>
         <div class="main-nav-space"></div>
+        <div class="main-nav-id">
+            {% if g.user %}
+                <p>{{ g.user.username }}</p>
+            {% endif %}
+        </div>
         <div class="main-nav-button">
             <button onclick="location.href=''">
                 Logout

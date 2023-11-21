@@ -1,3 +1,4 @@
+# Route "src/models/user.py".
 # Desc: Modules and libraries for users model.
 from config.config import db
 from flask_security import UserMixin, RoleMixin, AsaList

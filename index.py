@@ -1,5 +1,5 @@
 # Desc: Modules and libraries for launch the app.
-from flask import Flask
+from flask import Flask, g
 # Desc: My own modules and libraries for launch the app.
 from config.config import Config, db
 from src.routes.home import home_blueprint
@@ -13,12 +13,16 @@ app.config.from_object(Config)
 db.init_app(app)
 
 # Desc: Initialize Flask-Security.
-init_security(app)
+# init_security(app)
 
 # Desc: Blueprint of the app.
 app.register_blueprint(auth_blueprint)
 app.register_blueprint(home_blueprint)
 app.register_blueprint(clients_blueprint)
+
+@app.context_processor
+def inject_user():
+    return dict(user=g.user)
 
 # Desc: Launch the app.
 if __name__ == '__main__':

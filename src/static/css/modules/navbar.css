@@ -69,6 +69,24 @@
     flex-grow: 1;
 }
 
+.main-nav-id {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: #161616;
+    font-weight: bold;
+}
+
+.main-nav-id::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background-color: limegreen;
+}
+
 .main-nav-button button {
     font-size: 20px; 
     padding: 10px 20px; 
