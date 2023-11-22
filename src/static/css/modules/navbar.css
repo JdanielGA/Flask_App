@@ -6,9 +6,7 @@
 }
 
 .main-nav {
-    width: 15%;
     height: 100vh;
-    position: fixed;
     background-color: #34495e;
     display: flex;
     flex-direction: column;

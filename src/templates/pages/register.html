@@ -27,7 +27,7 @@
         </header>
         <main class="content-form">
             <form class="content-form__form" action="{{ url_for('user.register') }}" onsubmit="return validateForm()" method="post">
-                
+                {{ form.hidden_tag() }}
                 {{ form.id.label }}
                 {{ form.id(placeholder="Enter your id") }}<br>
                 {{ form.username.label }}
@@ -37,16 +37,22 @@
                 {{ form.password.label }}
                 {{ form.password(id="password", placeholder="Enter your password") }}<br>
                 {{ form.password_confirmation.label }}
-                {{ form.password_confirmation(id="confirm_password", placeholder="Confirm your password") }}<br>
+                {{ form.password_confirmation(id="password_confirmation", placeholder="Confirm your password") }}<br>
                 {{ form.roles.label }}
-                {{ form.roles }}<br>
+                {{ form.roles(placeholder="Enter the role") }}<br>
                 {{ form.register }} <br>
-                {% for message in get_flashed_messages() %}
-                    <div class="alert alert-danger" role="alert">
+            </form>
+            <div class="content-form__alert">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}" role="alert">
                         {{ message }}
                     </div>
-                {% endfor %}
-            </form>
+                    {% endfor %}
+                {% endif %}
+                {% endwith %}
+            </div>
         </main>
     </div>
 </body>

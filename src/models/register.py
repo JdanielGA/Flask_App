@@ -11,5 +11,5 @@ class RegisterForm(FlaskForm):
     email = StringField('Email:', [validators.DataRequired()])
     password = PasswordField('Password:', [validators.DataRequired()])
     password_confirmation = PasswordField('Confirm Password:', [validators.DataRequired()])
-    roles = SelectField('Role:', choices=[('user', 'User'), ('guest', 'Guest')], validators=[validators.DataRequired()])
+    roles = SelectField('Role:', choices=[('user', 'user'), ('guest', 'guest')], validators=[validators.DataRequired()])
     register = SubmitField('Register')

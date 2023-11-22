@@ -16,19 +16,23 @@ user_blueprint = Blueprint('user', __name__,)
 def register():
     form = RegisterForm(request.form)
     try:
-        if request.method == 'POST' and form.validate():
+        if request.method == 'POST':
             id = form.id.data
             username = form.username.data
             email = form.email.data
             password = form.password.data
-            password_confirmation = form.confirm_password.data
-            roles = form.roles.data
-            new_user = create_user(id, username, email, password, password_confirmation, roles)
-            if new_user:
-                flash(new_user)
+            password_confirmation = form.password_confirmation.data
+            active = True
+            role = form.roles.data
+            print(f'Role from form: -{role}-')
+            response, status = create_user(id, username, email, password, password_confirmation, active, role)
+            if status == 'success':
+                print(f'Response: {response} - Status: {status}')
+                flash(response, status)
                 return render_template('pages/register.html', form=form)
             else:
-                flash(new_user)
+                print(f'Response: {response} - Status: {status}')
+                flash(response, status)
                 return render_template('pages/register.html', form=form)
     except Exception as e:
         flash(e)
