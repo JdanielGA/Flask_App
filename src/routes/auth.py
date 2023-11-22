@@ -23,7 +23,7 @@ def login():
         user = login_user(username, password)
         if user:
             session.clear()
-            session['username'] = username
+            session['id'], session['username'] = user
             return redirect(url_for('home.home'))
         else:
             flash('username or password incorrect')
@@ -33,11 +33,11 @@ def login():
 # Desc: g object to get the user.
 @auth_blueprint.before_app_request
 def load_logged_in_user():
-    username = session.get('username')
-    if username is None:
+    user_id = session.get('id')
+    if user_id is None:
         g.user = None
     else:
-        g.user = User.query.filter_by(username=username).first()
+        g.user = User.query.get(user_id)
 
 # Desc: Decorator to force the user to login.
 def login_required(view):

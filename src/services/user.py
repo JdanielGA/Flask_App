@@ -17,7 +17,8 @@ def login_user(username=None, password=None):
             return False
     if not user.check_password(password):
         return False
-    return True
+    # Desc: return id and username.
+    return user.id, user.username
 
 # Desc: Funtion to create a new user.
 def create_user(id=None, username=None, email=None, password=None, password_confirmation=None,active=True, roles=None):
