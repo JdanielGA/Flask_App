@@ -1,5 +1,5 @@
 ''' Client model. '''
-# Route "src/models/clients.py".
+## Path: "src/models/clients.py".
 # Desc: Modules and libraries for clients model.
 from config.config import db
 from flask_security import UserMixin
@@ -10,7 +10,8 @@ from flask_wtf import FlaskForm
 # Desc: Client model class.
 class Client(db.Model, UserMixin):
     __tablename__ = 'clients'
-    id = db.Column(db.Integer, primary_key=True, index=True, nullable=False)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    nit = db.Column(db.String(50), unique=True, index=True, nullable=False)
     name = db.Column(db.String(50), unique=True, index=True, nullable=False)
     lastname = db.Column(db.String(50), unique=True, index=True, nullable=True)
     email = db.Column(db.String(50), unique=True, index=True, nullable=False)
@@ -26,7 +27,7 @@ class Client(db.Model, UserMixin):
     
 # Desc: Client form class.
 class ClientForm(FlaskForm):
-    id = StringField('Id:', [validators.DataRequired()])
+    nit = StringField('Nit:', [validators.DataRequired()])
     name = StringField('Name:', [validators.DataRequired()])
     lastname = StringField('Lastname:', [validators.DataRequired()])
     email = StringField('Email:', [validators.DataRequired()])
