@@ -1,3 +1,4 @@
+''' User model. '''
 # Route "src/models/user.py".
 # Desc: Modules and libraries for users model.
 from config.config import db
