@@ -1,59 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App: Home</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/register.css') }}">
-    <script text="text/javascript">
-        function validateForm() {
-            var password = document.getElementById("password").value;
-            var confirmPassword = document.getElementById("password_confirmation").value;
-            if (password != confirmPassword) {
-                alert("Las contraseñas no coinciden.");
-                return false;
-            }
-            return true;
+{% extends 'pages/base.html' %}
+
+{% block page %}Register new user{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/register.css') }}">
+{% endblock %}
+
+{% block js %}
+<script text="text/javascript">
+    function validateForm() {
+        var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("password_confirmation").value;
+        if (password != confirmPassword) {
+            alert("Las contraseñas no coinciden.");
+            return false;
         }
-    </script>
-</head>
-<body>
-    <div class="navbar">
-        {% include 'modules/navbar.html' %}
-    </div>
-    <div class="content">
-        <header class="content-header">
-            <h1>Register new user</h1>
-        </header>
-        <main class="content-form">
-            <form class="content-form__form" action="{{ url_for('user.register') }}" onsubmit="return validateForm()" method="post">
-                {{ form.hidden_tag() }}
-                {{ form.id.label }}
-                {{ form.id(placeholder="Enter your id") }}<br>
-                {{ form.username.label }}
-                {{ form.username(placeholder="Enter your username") }}<br>
-                {{ form.email.label }}
-                {{ form.email(placeholder="Enter your email") }}<br>
-                {{ form.password.label }}
-                {{ form.password(id="password", placeholder="Enter your password") }}<br>
-                {{ form.password_confirmation.label }}
-                {{ form.password_confirmation(id="password_confirmation", placeholder="Confirm your password") }}<br>
-                {{ form.roles.label }}
-                {{ form.roles(class="form-input") }}<br>
-                {{ form.register }} <br>
-            </form>
-        </main>
-        <div class="content-form__alert">
-            {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                <div class="alert alert-{{ category }}" role="alert">
-                    {{ message }}
-                </div>
-                {% endfor %}
-            {% endif %}
-            {% endwith %}
+        return true;
+    }
+</script>
+{% endblock %}
+
+{% block title %}Register new user{% endblock %}
+
+{% block content %}
+<main class="content-form">
+    <form class="content-form__form" action="{{ url_for('user.register') }}" onsubmit="return validateForm()" method="post">
+        {{ form.hidden_tag() }}
+        {{ form.id.label }}
+        {{ form.id(placeholder="Enter your id") }}<br>
+        {{ form.username.label }}
+        {{ form.username(placeholder="Enter your username") }}<br>
+        {{ form.email.label }}
+        {{ form.email(placeholder="Enter your email") }}<br>
+        {{ form.password.label }}
+        {{ form.password(id="password", placeholder="Enter your password") }}<br>
+        {{ form.password_confirmation.label }}
+        {{ form.password_confirmation(id="password_confirmation", placeholder="Confirm your password") }}<br>
+        {{ form.roles.label }}
+        {{ form.roles(class="form-input") }}<br>
+        {{ form.register }} <br>
+    </form>
+</main>
+<div class="content-form__alert">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}" role="alert">
+            {{ message }}
         </div>
-    </div>
-</body>
-</html>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+</div>
+{% endblock %}

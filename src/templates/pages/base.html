@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App: {% block page %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/modules/navbar.css') }}">
+    {% block css %}{% endblock %}
+    {% block js %}{% endblock %}
+</head>
+<body>
+    <div class="body">
+        <div class="container">
+            <div class="sidebar">
+                <div class="navbar">
+                    <div class="logo">
+                        <picture>
+                            <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="Logo">
+                        </picture>
+                    </div>
+                    <main class="menu">
+                        <nav class="menu-list">
+                            <ul class="menu-list__items">
+                                <li><a href="{{ url_for('home.home') }}">Dashboard</a></li>
+                                <li><a href="{{ url_for('clients.clients') }}">Clients</a></li>
+                                <li><a href="{{ url_for('tasks.tasks') }}">Task</a></li>
+                                <li><a href="{{ url_for('calendar.calendar') }}">Calendar</a></li>
+                                <li><a href="{{ url_for('user.register') }}">Settings</a></li>
+                            </ul>
+                        </nav>
+                    </main>
+                    <div class="logout">
+                        <button type="button" class="logout-button" onclick="location.href='{{ url_for('login.logout') }}'">Logout</button>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="content-title"><h1>{% block title %}{% endblock %}</h1></div>
+                <div class="montent-main">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="session">
+                <h2><span class="circle"></span>
+                    {% if g.user %}
+                        {{ g.user.username }}
+                    {% endif %}
+                </h2>
+            </div>
+            <div class="info">
+                <h1>This is the footer</h1>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

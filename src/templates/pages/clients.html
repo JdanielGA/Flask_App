@@ -1,24 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App: Clients</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/clients.css') }}">
-</head>
-<body>
-    <div class="navbar">
-        {% include 'modules/navbar.html' %}
-    </div>
-    <div class="content">
-        <header class="content-header">
-            <h1>Clients</h1>
-        </header>
-        <main class="content-main">
-            <p>
-                You are in the clients page.
-            </p>
-        </main>
-    </div>
-</body>
-</html>
+{% extends 'pages/base.html' %}
+
+{% block page %}Clients{% endblock %}
+
+{% block title %}Clients{% endblock %}
