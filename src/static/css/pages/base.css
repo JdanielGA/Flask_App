@@ -11,9 +11,9 @@ html {
 
 .body {
     width: 100vw;
-    min-width: 64rem;
+    min-width: 96rem;
     height: 100vh;
-    min-height: 42rem;
+    min-height: 54rem;
     display: flex;
     flex-direction: column;
 }
@@ -41,7 +41,6 @@ html {
     flex: 1;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
     background: linear-gradient(to top, #341A22 , #EE779D);
 }
 
@@ -57,7 +56,8 @@ html {
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.20);
 }
 
-.montent-main {
+.content-main {
+    flex: 1;
     padding: 2rem;
     display: flex;
     flex-direction: column;

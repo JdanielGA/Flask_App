@@ -27,18 +27,18 @@
     <form class="content-form__form" action="{{ url_for('user.register') }}" onsubmit="return validateForm()" method="post">
         {{ form.hidden_tag() }}
         {{ form.id.label }}
-        {{ form.id(placeholder="Enter your id") }}<br>
+        {{ form.id(placeholder="Enter your id") }}
         {{ form.username.label }}
-        {{ form.username(placeholder="Enter your username") }}<br>
+        {{ form.username(placeholder="Enter your username") }}
         {{ form.email.label }}
-        {{ form.email(placeholder="Enter your email") }}<br>
+        {{ form.email(placeholder="Enter your email") }}
         {{ form.password.label }}
-        {{ form.password(id="password", placeholder="Enter your password") }}<br>
+        {{ form.password(id="password", placeholder="Enter your password") }}
         {{ form.password_confirmation.label }}
-        {{ form.password_confirmation(id="password_confirmation", placeholder="Confirm your password") }}<br>
+        {{ form.password_confirmation(id="password_confirmation", placeholder="Confirm your password") }}
         {{ form.roles.label }}
-        {{ form.roles(class="form-input") }}<br>
-        {{ form.register }} <br>
+        {{ form.roles(class="form-input") }}
+        {{ form.register }}
     </form>
 </main>
 <div class="content-form__alert">

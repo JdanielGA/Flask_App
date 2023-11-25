@@ -15,11 +15,11 @@ class Client(db.Model, UserMixin):
     name = db.Column(db.String(50), unique=True, index=True, nullable=False)
     lastname = db.Column(db.String(50), unique=True, index=True, nullable=True)
     email = db.Column(db.String(50), unique=True, index=True, nullable=False)
-    phone = db.Column(db.String(50), unique=True, index=True, nullable=False)
-    address = db.Column(db.String(50), unique=True, index=True, nullable=True)
-    city = db.Column(db.String(50), unique=True, index=True, nullable=True)
-    state = db.Column(db.String(50), unique=True, index=True, nullable=True)
-    notes = db.Column(db.String(255), unique=True, index=True, nullable=True)
+    phone = db.Column(db.String(50), unique=False, index=True, nullable=False)
+    address = db.Column(db.String(50), unique=False, index=True, nullable=True)
+    city = db.Column(db.String(50), unique=False, index=True, nullable=True)
+    state = db.Column(db.String(50), unique=False, index=True, nullable=True)
+    notes = db.Column(db.String(255), unique=False, index=True, nullable=True)
 
     # Desc: Method to print the object.
     def __repr__(self):

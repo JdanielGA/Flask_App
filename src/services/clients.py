@@ -30,7 +30,7 @@ class ClientServices:
         
         # Desc: Create the client.
         client = Client(
-            id=self.id,
+            nit=self.nit,
             name=self.name,
             lastname=self.lastname,
             email=self.email,
@@ -48,7 +48,7 @@ class ClientServices:
     def get_clients(self):
         clients = Client.query.all()
         if not clients:
-            return ('The clients database is empty!', 'error')
+            return None
         return clients
     
     # Desc: Funtion to get a client by id.
