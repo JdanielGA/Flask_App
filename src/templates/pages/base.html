@@ -13,19 +13,19 @@
     <div class="container">
         <main class="content">
             <div class="content-title">
+                <div class="session">
+                    <h2><span class="circle"></span>
+                        {% if g.user %}
+                        {{ g.user.username }}
+                        {% endif %}
+                    </h2>
+                </div>
                 <h1>
                     {% block title %}
                     {% endblock %}
                 </h1>
             </div>
             <div class="content-main">
-                <div class="session">
-                    <h2><span class="circle"></span>
-                        {% if g.user %}
-                            {{ g.user.username }}
-                        {% endif %}
-                    </h2>
-                </div>
                 {% block content %}
                 {% endblock %}
             </div>
