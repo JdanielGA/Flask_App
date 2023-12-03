@@ -10,49 +10,69 @@
     {% block js %}{% endblock %}
 </head>
 <body>
-    <div class="body">
-        <div class="container">
-            <div class="sidebar">
-                <div class="navbar">
-                    <div class="logo">
-                        <picture>
-                            <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="Logo">
-                        </picture>
-                    </div>
-                    <main class="menu">
-                        <nav class="menu-list">
-                            <ul class="menu-list__items">
-                                <li><a href="{{ url_for('home.home') }}">Dashboard</a></li>
-                                <li><a href="{{ url_for('clients.clients') }}">Clients</a></li>
-                                <li><a href="{{ url_for('tasks.tasks') }}">Task</a></li>
-                                <li><a href="{{ url_for('calendar.calendar') }}">Calendar</a></li>
-                                <li><a href="{{ url_for('user.register') }}">Settings</a></li>
-                            </ul>
-                        </nav>
-                    </main>
-                    <div class="logout">
-                        <button type="button" class="logout-button" onclick="location.href='{{ url_for('login.logout') }}'">Logout</button>
-                    </div>
-                </div>
-            </div>
-            <div class="content">
-                <div class="content-title"><h1>{% block title %}{% endblock %}</h1></div>
-                <div class="content-main">
-                    {% block content %}
+    <div class="container">
+        <main class="content">
+            <div class="content-title">
+                <h1>
+                    {% block title %}
                     {% endblock %}
+                </h1>
+            </div>
+            <div class="content-main">
+                <div class="session">
+                    <h2><span class="circle"></span>
+                        {% if g.user %}
+                            {{ g.user.username }}
+                        {% endif %}
+                    </h2>
                 </div>
+                {% block content %}
+                {% endblock %}
             </div>
-        </div>
-        <div class="footer">
-            <div class="session">
-                <h2><span class="circle"></span>
-                    {% if g.user %}
-                        {{ g.user.username }}
-                    {% endif %}
-                </h2>
+        </main>
+        <div class="navbar">
+            <div class="navbar-logo">
+                <picture>
+                    <img src="{{ url_for('static', filename='images/logo-LA-V01.svg') }}" alt="Logo">
+                </picture>
             </div>
-            <div class="info">
-                <h1>This is the footer</h1>
+            <div class="navbar-menu">
+                <div class="navbar-menu__button">
+                    <button onclick="location.href='{{ url_for('home.home') }}'">
+                        <img src="{{ url_for('static', filename='images/icons/tablero.png') }}" alt="Dashboar-icon">
+                        <span>Dashboard</span>
+                    </button>
+                </div>
+                <div class="navbar-menu__button">
+                    <button onclick="location.href='{{ url_for('clients.clients') }}'">
+                        <img src="{{ url_for('static', filename='images/icons/directorio-telefonico.png') }}" alt="Clients-icon">
+                        <span>Clients</span>
+                    </button>
+                </div>
+                <div class="navbar-menu__button">
+                    <button onclick="location.href='{{ url_for('tasks.tasks') }}'">
+                        <img src="{{ url_for('static', filename='images/icons/lista-de-tareas.png') }}" alt="Task-icon">
+                        <span>Task</span>
+                    </button>
+                </div>
+                <div class="navbar-menu__button">
+                    <button onclick="location.href='{{ url_for('calendar.calendar') }}'">
+                        <img src="{{ url_for('static', filename='images/icons/time-and-calendar.png') }}" alt="Calendar-icon">
+                        <span>Calendar</span>
+                    </button>
+                </div>
+                <div class="navbar-menu__button">
+                    <button onclick="location.href='{{ url_for('user.register') }}'">
+                        <img src="{{ url_for('static', filename='images/icons/ajustamiento.png') }}" alt="Settings-icon">
+                        <span>Settings</span>
+                    </button>
+                </div>
+                <div class="navbar-menu__button">
+                    <button onclick="location.href='{{ url_for('login.logout') }}'">
+                        <img src="{{ url_for('static', filename='images/icons/apagar.png') }}" alt="Logout-icon">
+                        <span>Logout</span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>

@@ -1,79 +1,90 @@
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 html {
     font-size: 62.5%;
-    font-family: sans-serif;
 }
-
-.body {
-    width: 100vw;
-    min-width: 96rem;
-    height: 100vh;
-    min-height: 54rem;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Main Container */
 
 .container {
+    width: 100vw;
+    min-width: 360px;
+    height: 100vh;
+    min-height: 640px;
     display: flex;
-    flex: 1;
+    flex-wrap: wrap;
+    background: linear-gradient(45deg, #FDCB47 , #EE779D);
 }
-
-/* Sidebar */
-.sidebar {
-    width: 10vw;
-    min-width: 15rem;
-    max-width: 20rem;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Content */
 
 .content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    background: linear-gradient(to top, #341A22 , #EE779D);
+    width: 100%;
+    height: 90%;
+    min-height: 57.6rem;
 }
 
 .content-title {
-    height: 6rem;
     width: 100%;
+    height: 6rem;
     padding: 0 2rem;
     display: flex;
     align-items: center;
     color: black;
-    font-size: 2rem;
+    font-size: 1.6rem;
     background: rgba(255, 255, 255, 0.20);
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.20);
+    box-shadow: 0 1rem 2rem -0.5rem rgba(0, 0, 0, 0.20);
 }
 
-.content-main {
-    flex: 1;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-/* Footer */
-
-.footer {
+.navbar {
     width: 100%;
-    height: 3rem;
+    height: 10%;
+    background: linear-gradient(to top, #8B699A, #6D99BC);
+    box-shadow: 0 -1rem 2rem 0.5rem rgba(0, 0, 0, 0.20);
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    background: linear-gradient(to right, #84BFB9 , #6F98BB);
+}
+
+.navbar-logo {
+    display: none;
+}
+
+.navbar-menu {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navbar-menu__button img {
+    width: auto;
+    height: 4rem;
+}
+
+.navbar-menu__button button {
+    padding: 0.5rem;
+    background: none;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.navbar-menu__button button:hover {
+    background: rgba(255, 255, 255, 0.20);
+    transform: scale(1.01);
+}
+
+.navbar-menu__button button:active {
+    background: rgba(255, 255, 255, 0.20);
+    transform: scale(0.99);
+}
+
+
+.navbar-menu__button button span {
+    display: none;
 }
 
 .session {
@@ -96,10 +107,76 @@ html {
     background-color: rgb(0, 177, 0);
 }
 
-.info {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
+@media (min-width: 720px) {
+    .content {
+        width: 85%;
+        height: 100%;
+        order: 2;
+    }
+    
+    .navbar {
+        width: 15%;
+        height: 100%;
+        padding: 2rem 1rem;
+        order: 1;
+        box-shadow: 1rem 0 2rem 0 rgba(0, 0, 0, 0.20);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar-logo {
+        width: 100%;
+        min-width: 10rem;
+        height: 25%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .navbar-logo img {
+        width: auto;
+        height: 100%;
+        max-height: 12rem;
+    }
+
+    .navbar-menu {
+        width: 100%;
+        height: 60%;
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+}
+
+@media (min-width: 900px) {
+
+    .navbar-logo img {
+        width: 100%;
+        height: 100%;
+        max-height: 15rem;
+    }
+    
+    .navbar-menu {
+        align-items: flex-start;
+    }
+
+    .navbar-menu__button {
+        width: 100%;
+    }
+
+    .navbar-menu__button button {
+        width: 100%;    
+        display: flex;
+        align-items: center;
+        border-radius: 1rem;
+    }
+
+    .navbar-menu__button button span {
+        padding: 0 0.5rem;
+        display: inline;
+        font-size: max(1.2rem, min(1.2vw, 2rem));
+    }
 }
