@@ -7,32 +7,34 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/login.css') }}">
 </head>
 <body>
-    <div class="content">
-        <div class="content-logo">
-            <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="Logo">
-        </div>
-        <div class="divider"></div>
-        <div class="content-login">
-            <header class="content-login__header">
-                <h1>Login</h1>
-            </header>
-            <form class="content-login__form" action="{{ url_for('login.login') }}" method="post">
-                {{ form.hidden_tag() }}
-                {{ form.username.label }}
-                {{ form.username(placeholder="Enter your username or email") }}<br>
-                {{ form.password.label }}
-                {{ form.password(placeholder="Enter your password") }}<br>
-                {{ form.login }} <br>
-            </form>
-            <div class="content-login__alerts">
-                {% for message in get_flashed_messages() %}
-                    <div class="alert alert-danger" role="alert">
-                        {{ message }}
-                    </div>
-                {% endfor %}
+    <main class="container">
+        <div class="logo">
+            <div class="logo-pic">
+                <img src="{{ url_for('static', filename='images/logo-LA-V01.svg') }}" alt="Logo">
             </div>
         </div>
-    </div>
-    
+        <div class="form">
+            <div class="form-login">
+                <form class="form-login__form" action="{{ url_for('login.login') }}" method="post">
+                    {{ form.hidden_tag() }}
+                    <div class="input-container">
+                        <img src="{{ url_for('static', filename='images/icons/usuario.png') }}" alt="user-icon">
+                        {{ form.username(placeholder="Enter your username or email") }}
+                    </div>
+                    <div class="input-container">
+                        <img src="{{ url_for('static', filename='images/icons/encerrar.png') }}" alt="password-icon">
+                        {{ form.password(placeholder="Enter your password") }}
+                    </div>
+                    {{ form.login }}
+                </form>
+                <div class="content-login__alerts">
+                    {% for message in get_flashed_messages() %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
-</html>
