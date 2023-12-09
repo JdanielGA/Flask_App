@@ -10,41 +10,34 @@
 
 {% block content %}
 <section class="clients">
-    <div class="clients-utils"></div>
+    <div class="clients-utils">
+        <input type="text" id="search-bar" placeholder="Search...">
+    </div>
     <div class="clients-content">
-        <table class="table">
-            <thead class="table-header">
-                <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Nit</th>
-                    <th scope="col">Client</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">City</th>
-                    <th scope="col">State</th>
-                    <th scope="col">Notes</th>
-                    <th scope="col" colspan="2">Actions</th>
-                </tr>
-            </thead>
-            <tbody class="table-list">
-                {% for client in clients %}
-                <tr>
-                    <td scope="row">{{ client.id }}</td>
-                    <td>{{ client.nit }}</td>
-                    <td>{{ client.name }} {{ client.lastname }}</td>
-                    <td>{{ client.email }}</td>
-                    <td>{{ client.phone }}</td>
-                    <td>{{ client.address }}</td>
-                    <td>{{ client.city }}</td>
-                    <td>{{ client.state }}</td>
-                    <td>{{ client.notes }}</td>
-                    <td><a href="">Update</a></td>
-                    <td><a href="">Delete</a></td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        {% for client in clients %}
+        <div class="content-main__element">
+            <div class="content-main__element-inner">
+                <p>{{ client.nit }}</p>
+                <p>{{ client.name }} {{ client.lastname }}</p>
+                <p>{{ client.email }}</p>
+                <p>{{ client.phone }}</p>
+                <p>{{ client.address }}</p>
+                <p>{{ client.city }}</p>
+                <p>{{ client.state }}</p>
+                <p>{{ client.notes }}</p>
+            </div>
+            <div class="content-main__element-options">
+                <button class="content-main__element-buttons update-button">
+                    <img src="{{ url_for('static', filename='images/icons/actualizar.png') }}" alt="">
+                    <span>Update</span>
+                </button>
+                <button class="content-main__element-buttons delete-button">
+                    <img src="{{ url_for('static', filename='images/icons/borrar.png') }}" alt="">
+                    <span>Delete</span>
+                </button>
+            </div>
+        </div>
+        {% endfor %}
     </div>
 </section>
 {% endblock %}
