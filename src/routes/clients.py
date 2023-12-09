@@ -1,5 +1,5 @@
 # Desc: Modules and libraries for home route
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask import Blueprint, jsonify, render_template, request, redirect, url_for, flash
 # Desc: My own modules and libraries for home route
 from config.config import db
 from src.routes.auth import login_required
@@ -21,3 +21,13 @@ def clients():
 @login_required
 def create_client():
     return render_template('pages/create_client.html')
+
+# Desc: Search client route
+@clients_blueprint.route('/clients/search', methods=['GET'])
+@login_required
+def search_client():
+    query = request.args.get('query')
+    print(f"Query: {query}")
+    clients = Client.query.filter(Client.name.ilike(f"%{query}%")).all()
+    print(f"Clients: {clients}")
+    return jsonify([client.serialize() for client in clients])

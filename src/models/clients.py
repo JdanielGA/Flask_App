@@ -25,6 +25,21 @@ class Client(db.Model, UserMixin):
     def __repr__(self):
         return '<Client %r>' % self.name
     
+    def serialize(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'lastname': self.lastname,
+            'email': self.email,
+            'phone': self.phone,
+            'address': self.address,
+            'city': self.city,
+            'state': self.state,
+            'notes': self.notes,
+            'update_icon_url': '/static/images/icons/actualizar.png',
+            'delete_icon_url': '/static/images/icons/borrar.png',
+        }
+    
 # Desc: Client form class.
 class ClientForm(FlaskForm):
     nit = StringField('Nit:', [validators.DataRequired()])

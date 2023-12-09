@@ -27,11 +27,11 @@
                 <p>{{ client.notes }}</p>
             </div>
             <div class="content-main__element-options">
-                <button class="content-main__element-buttons update-button">
+                <button type="button" class="content-main__element-buttons update-button">
                     <img src="{{ url_for('static', filename='images/icons/actualizar.png') }}" alt="">
                     <span>Update</span>
                 </button>
-                <button class="content-main__element-buttons delete-button">
+                <button type="button" class="content-main__element-buttons delete-button">
                     <img src="{{ url_for('static', filename='images/icons/borrar.png') }}" alt="">
                     <span>Delete</span>
                 </button>
@@ -39,5 +39,44 @@
         </div>
         {% endfor %}
     </div>
+    <script>
+        document.getElementById('search-bar').addEventListener('input', function() {
+            fetch('/clients/search?query=' + this.value)
+                .then(response => response.json())
+                .then(clients => {
+                    var clientsContent = '';
+                    if (clients.length > 0) {
+                        for (var client of clients) {
+                            clientsContent += `
+                            <div class="content-main__element">
+                                <div class="content-main__element-inner">
+                                    <p>${client.nit}</p>
+                                    <p>${client.name} ${client.lastname}</p>
+                                    <p>${client.email}</p>
+                                    <p>${client.phone}</p>
+                                    <p>${client.address}</p>
+                                    <p>${client.city}</p>
+                                    <p>${client.state}</p>
+                                    <p>${client.notes}</p>
+                                </div>
+                                <div class="content-main__element-options">
+                                    <button class="content-main__element-buttons update-button">
+                                        <img src="${client.update_icon_url}" alt="">
+                                        <span>Update</span>
+                                    </button>
+                                    <button class="content-main__element-buttons delete-button">
+                                        <img src="${client.delete_icon_url}" alt="">
+                                        <span>Delete</span>
+                                    </button>
+                                </div>
+                            </div>`;
+                        }
+                    } else {
+                        clientsContent = '<h1>No se encontraron resultados.</h1>';
+                    }
+                    document.querySelector('.clients-content').innerHTML = clientsContent;
+                });
+        });
+    </script>
 </section>
 {% endblock %}
