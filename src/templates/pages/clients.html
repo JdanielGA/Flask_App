@@ -11,7 +11,16 @@
 {% block content %}
 <section class="clients">
     <div class="clients-utils">
-        <input type="text" id="search-bar" placeholder="Search...">
+        <div class="clients-utils__search">
+            <img src="{{ url_for('static', filename='images/icons/busqueda.png') }}" alt="Search-icon">
+            <input type="text" id="search-bar" placeholder="Type the name...">
+        </div>
+        <div class="clients-utils__create">
+            <button type="button" onclick="location.href='{{ url_for('clients.create_client') }}'">
+                <img src="{{ url_for('static', filename='images/icons/agregar-usuario.png') }}" alt="Create-icon">
+                <span>Create</span>
+            </button>
+        </div>
     </div>
     <div class="clients-content">
         {% for client in clients %}
@@ -27,11 +36,11 @@
                 <p>{{ client.notes }}</p>
             </div>
             <div class="content-main__element-options">
-                <button type="button" class="content-main__element-buttons update-button">
+                <button type="button" class="content-main__element-buttons update-button" >
                     <img src="{{ url_for('static', filename='images/icons/actualizar.png') }}" alt="">
                     <span>Update</span>
                 </button>
-                <button type="button" class="content-main__element-buttons delete-button">
+                <button type="button" class="content-main__element-buttons delete-button" onclick="location.href='{{ url_for('clients.delete_client', id = client.id) }}'">
                     <img src="{{ url_for('static', filename='images/icons/borrar.png') }}" alt="">
                     <span>Delete</span>
                 </button>

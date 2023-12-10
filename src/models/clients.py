@@ -28,6 +28,7 @@ class Client(db.Model, UserMixin):
     def serialize(self):
         return {
             'id': self.id,
+            'nit': self.nit,
             'name': self.name,
             'lastname': self.lastname,
             'email': self.email,

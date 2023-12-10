@@ -56,7 +56,8 @@ class ClientServices:
         client = Client.query.filter_by(id=self.id).first()
         if not client:
             return ('The client does not exist!', 'error')
-        return client
+        message = 'success'
+        return client, message
     
     # Desc: Funtion to get a client by nit.
     def get_client_by_nit(self):

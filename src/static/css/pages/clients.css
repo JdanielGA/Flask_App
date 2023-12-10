@@ -15,6 +15,62 @@
     align-items: center;
 }
 
+.clients-utils__search {
+    width: 60%;
+    min-width: 21rem;
+    max-width: 32rem;
+    height: 3.5rem;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 1.25rem;
+    font-size: 1.6rem;
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.clients-utils__search img {
+    width: 3rem;
+    height: 3rem;
+}
+
+.clients-utils__search input {
+    width: 100%;
+    height: 100%;
+    padding: 0 1rem;
+    border: none;
+    outline: none;
+    font-size: 1.6rem;
+    background-color: transparent;
+}
+
+.clients-utils__create button {
+    width: 10rem;
+    height: 3.5rem;
+    margin-left: 1rem;
+    border: none;
+    background-color: rgb(31, 187, 57);
+    border-radius: 1.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clients-utils__create button:hover {
+    box-shadow: 0 0 0.3rem 0.25rem rgba(0, 0, 0, 0.20);
+    transform: scale(1.01);
+}
+
+.clients-utils__create button:active {
+    box-shadow: 0 0 0.3rem 0.1rem rgba(0, 0, 0, 0.20);
+    transform: scale(0.99);
+}
+
+.clients-utils__create img {
+    width: 3rem;
+    height: 3rem;
+}
+
 .clients-content {
     width: 100%;
     padding: 1rem;
@@ -74,6 +130,12 @@
 
 .update-button:hover {
     background-color: rgba(255, 255, 255, 0.25);
+    transform: scale(1.01);
+}
+
+.update-button:active {
+    background-color: rgba(255, 255, 255, 0.35);
+    transform: scale(0.99);
 }
 
 .delete-button {
@@ -82,4 +144,10 @@
 
 .delete-button:hover {
     background-color: rgba(255, 255, 255, 0.25);
+    transform: scale(1.01);
+}
+
+.delete-button:active {
+    background-color: rgba(255, 255, 255, 0.35);
+    transform: scale(0.99);
 }
